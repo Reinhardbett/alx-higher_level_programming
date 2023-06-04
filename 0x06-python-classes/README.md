@@ -1,0 +1,1 @@
+Pythonic way of OOP
