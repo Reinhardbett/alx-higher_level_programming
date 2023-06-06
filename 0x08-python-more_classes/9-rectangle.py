@@ -96,8 +96,6 @@ class Rectangle:
             1.cls (obj): a new instance with size equal to
             both width and height
         '''
-        cls.width = size
-        cls.height = size
         return (cls(size, size))
 
     @property
