@@ -93,10 +93,9 @@ class Rectangle:
             1.cls (obj): a new instance from Rectangle
             2.size (int): integer initialized to zero
         Returns:
-            1.cls (obj): a new instance with size equal to
-            both width and height
+            1.cls (obj): a new instance with equal sizes
         '''
-        return (cls(size, size))
+        return cls(size, size)
 
     @property
     def height(self):
