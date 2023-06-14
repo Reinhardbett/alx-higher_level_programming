@@ -1,0 +1,18 @@
+'say_my_name()' prints "My name is " + "first name" + "last name"
+>>> say_my_name = __import__('3-say_my_name').say_my_name
+>>> say_my_name("Walter") #doctest: +NORMALIZE_WHITESPACE
+My name is Walter
+>>> say_my_name("Walter", "White")
+My name is Walter White
+>>> say_my_name("Jesse", "Pinkman")
+My name is Jesse Pinkman
+
+FAIL CASES
+>>> say_my_name(18, "White")
+Traceback (most recent call last):
+    ...
+TypeError: first_name must be a string
+>>> say_my_name("Jesse", 79)
+Traceback (most recent call last):
+    ...
+TypeError: last_name must be a string
