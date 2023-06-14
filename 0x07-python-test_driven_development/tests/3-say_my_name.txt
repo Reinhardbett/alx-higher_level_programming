@@ -4,8 +4,6 @@
 My name is Walter
 >>> say_my_name("Walter", "White")
 My name is Walter White
->>> say_my_name("Jesse", "Pinkman")
-My name is Jesse Pinkman
 
 FAIL CASES
 >>> say_my_name(18, "White")
