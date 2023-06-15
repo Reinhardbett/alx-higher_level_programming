@@ -1,0 +1,25 @@
+The ``100-matrix_mul`` module
+======================
+
+Using ``matrix_mul``
+-------------------
+
+Importing the function from the module:
+	>>> matrix_mul = __import__("100-matrix_mul").matrix_mul
+
+Checking for module docstring:
+	 >>> m = __import__("100-matrix_mul").__doc__
+	 >>> len(m) > 1
+	 True
+
+Checking for function docstring:
+	 >>> f = __import__("100-matrix_mul").matrix_mul.__doc__
+         >>> len(f) > 1
+         True
+
+Checking for no args:
+	 >>> matrix_mul()
+	 Traceback (most recent call last):
+	 ...
+	 TypeError: matrix_mul() missing 2 required positional arguments: 'm_a' and 'm_b'
+

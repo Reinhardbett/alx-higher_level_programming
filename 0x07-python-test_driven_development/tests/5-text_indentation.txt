@@ -1,0 +1,22 @@
+'text_indentation()' prints a string with new lines in between
+>>> text_indentation = __import__.('5-text_indentation').text_indentation
+>>> text_indentation(2)
+Traceback (most recent call last):
+    ...
+TypeError: text must be a string
+>>> text_indentation(float("me"))
+Traceback (most recent call last):
+    ...
+TypeError: text must be a string
+>>> text_indentation(int("OUR time"))
+Traceback (most recent call last):
+    ...
+TypeError: text must be a string
+>>> text_indentation("Out in the open? So what.")
+Out in the open?
+<BLANKLINE>
+So what.
+<BLANKLINE>
+>>> text_indentation("We are building from the back:")
+We are building from the back:
+<BLANKLINE>
