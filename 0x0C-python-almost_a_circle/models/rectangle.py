@@ -99,7 +99,7 @@ class Rectangle(Base):
         return ("[{}] ({}) {}/{} - {}/{}".format(type(self).__name__, self.id,
                 self.x, self.y, self.width, self.height))
 
-    def update(self, *args):
+    def update(self, *args, **kwargs):
         '''Assign an argument to each attribute
         Follow the order of id, width, height, x, y
         '''
@@ -120,3 +120,18 @@ class Rectangle(Base):
                 elif count == 4:
                     self.y = arg
                 count += 1
+        elif kwargs or len(kwargs) != 0:
+            for k, v in kwargs.items():
+                if k == 'id':
+                    if v is None:
+                        self.__init__(self.width, self.height, self.x, self.y)
+                    else:
+                        self.id = v
+                elif k == 'width':
+                    self.width = v
+                elif k == 'height':
+                    self.height = v
+                elif k == 'x':
+                    self.x = v
+                elif k == 'y':
+                    self.y = v
