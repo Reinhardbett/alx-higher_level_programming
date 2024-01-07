@@ -42,3 +42,14 @@ class Base:
                 g.write("[]")
             NewList = [o.to_dictionary() for o in list_objs]
             g.write(Base.to_json_string(NewList))
+
+    @staticmethod
+    def from_json_string(json_string):
+        '''Return list of json_string
+        Arg:
+            1. json_string (str): string for dictionaries list
+        '''
+        if json_string is None or json_string == "":
+            return "[]"
+        list_obj = json.loads(json_string)
+        return list_obj
