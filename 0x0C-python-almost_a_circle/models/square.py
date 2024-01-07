@@ -59,3 +59,14 @@ class Square(Rectangle):
                     self.x = v
                 elif k == 'y':
                     self.y = v
+
+    def to_dictionary(self):
+        '''Return dictionary representation
+        Must contain id, size, x, y
+        '''
+        dict = {
+                'id': self.id,
+                'size': self.size,
+                'x': self.x,
+                'y': self.y}
+        return dict
