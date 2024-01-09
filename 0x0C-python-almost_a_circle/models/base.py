@@ -53,3 +53,14 @@ class Base:
             return "[]"
         list_obj = json.loads(json_string)
         return list_obj
+
+    @classmethod
+    def create(cls, **dictionary):
+        '''Return an instance with all attributes set
+        Args:
+            1. dictionary (dict): double pointer to dict
+        '''
+        if dictionary and dictionary != {}:
+            x = cls(1, 1)
+            x.update(**dictionary)
+        return x
