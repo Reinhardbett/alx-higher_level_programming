@@ -21,7 +21,7 @@
 - All files will be interpreted on Ubuntu 20.04 LTS using node version 14.x
 - All files should end with a new line and must be executable
 - All code should be semistandard compliant (version 16.x.x)
-[![js-semistandard-style](https://raw.githubusercontent.com/standard/semistandard/master/badge.svg)](https://github.com/standard/semistandard)
+- [![js-semistandard-style](https://raw.githubusercontent.com/standard/semistandard/master/badge.svg)](https://github.com/standard/semistandard)
 
 ### Install Node 14
 ```
@@ -29,4 +29,6 @@ $ curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
 $ sudo apt-get install -y nodejs
 ```
 ### Install semi-standard
+```
 $ sudo npm install semistandard --global
+```
