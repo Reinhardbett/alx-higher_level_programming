@@ -16,7 +16,7 @@ if __name__ == "__main__":
         r_json = r.json()
         if r_json:
             '''Assuming result is a dict'''
-            print("[{}] {}".format(r_json['id'], r_json['name']))
+            print("[{}] {}".format(r_json.get("id"), r_json.get("name")))
         else:
             print("No result")
     except requests.exceptions.JSONDecodeError:
