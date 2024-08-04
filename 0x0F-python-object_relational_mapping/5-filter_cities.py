@@ -29,7 +29,7 @@ if __name__ == "__main__":
         ORDER BY cities.id ASC"
     cur.execute(query, (sys.argv[4],))
     rows = cur.fetchall()
-    
+
     # Create a list of tuples and output as string
     print(", ".join([row[0] for row in rows]))
 
