@@ -20,14 +20,11 @@ if __name__ == "__main__":
 
     # Display table states in ascending order by states.id
     # Specify the beginning letter of each state
-    cur.execute(
-        "SELECT * FROM states\
-        WHERE name LIKE 'N%'\
-        ORDER BY id ASC"
-    )
+    cur.execute("SELECT * FROM states ORDER BY id ASC")
     rows = cur.fetchall()
     for row in rows:
-        print(row)
+        if row[1].startswith("N"):
+            print(row)
 
     # Close connection to database and working environment
     cur.close()
