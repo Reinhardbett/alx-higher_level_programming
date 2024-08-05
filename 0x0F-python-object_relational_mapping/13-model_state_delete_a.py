@@ -27,6 +27,6 @@ if __name__ == "__main__":
     # Loop through the states and delete
     for state in states_with_a:
         session.delete(state)
-    session.commit()
 
+    session.commit()
     session.close()
