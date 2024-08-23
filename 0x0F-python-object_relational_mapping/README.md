@@ -59,12 +59,12 @@ $ python3
 SQLAlchemy ORM helps map python classes to database tables.
 When using ORM we must first describe the database tables then define classes we will map to these tables
 - Connect by first calling an engine using `create_engine`, here we have not yet connected to the database.
-```
+```python
 from sqlalchemy import create_engine
 engine = create_engine('sqlite:///:memory:', echo=True)
 ```
 - Classes we define will use elements of a base class provided 
-```
+```python
 from sqlalchemy.ext.declarative import declarative_base
 
 Base = declarative_base()
@@ -72,7 +72,7 @@ Base = declarative_base()
 - We can now define classes from this base that will shape how we want our tables to look.
 - The class must define details about the table which we will be mapping.
 - At minimum it must have the tablename attribute and one column which is a primary key
-```
+```python
 from sqlalchemy import Column, Integer, String
 class User(Base):
     __tablename__ = 'users'
@@ -84,4 +84,45 @@ class User(Base):
        return "<User(name='%s', fullname='%s', nickname='%s')>" % (
                             self.name, self.fullname, self.nickname)
 ```
-
+- Since our database does not actuallly have a users table present, we can use MetaData to issue CREATE TABLE statements to the database for all tables that don't yet exist.
+```
+>>> Base.metadata.create_all(engine)
+```
+- We can now create an instance of the mapped class
+```
+ed_user = User(name='ed', fullname='Ed Jones', nickname='edsnickname')
+ed_user.name
+'ed'
+ed_user.nickname
+'edsnickname'
+str(ed_user.id)
+'None'
+```
+- To talk to the database, we must first set up a session using the `Session` class
+```python
+from sqlalchemy.orm import sessionmaker
+Session = sessionmaker(bind=engine)
+```
+- If the application does not yet have an `engine` when you define your module-level objects, use:
+```python
+Session = sessionmaker()
+```
+- Later when you create your engine with `create_engine()`, connect it to the `Session` using `sessionmaker.configure()`
+```python
+Session.configure(bind=engine)  # once engine is available
+```
+- When a session is first used, it retrieves a connection from a pool of connections maintained by the Engine, holds onto it until one commits all changes and/or close the session object.
+- To persist our User object, we `Session.add() it to our `Session`:
+```
+ed_user = User(name='ed', fullname='Ed Jones', nickname='edsnickname')
+session.add(ed_user)
+```
+- We can add more User objects at once using `add_all()`:
+```
+session.add_all([
+    User(name='wendy', fullname='Wendy Williams', nickname='windy'),
+    User(name='mary', fullname='Mary Contrary', nickname='mary'),
+    User(name='fred', fullname='Fred Flintstone', nickname='freddy')])
+```
+- To issue all remaining changes to the database and commit the transaction, we use `Session.commit()` 
+- The connection resources referenced by the session are now returned to the connection pool
